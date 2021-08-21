@@ -76,12 +76,15 @@ const updateUI = (gitObjects) => {
   outputBox.value = outputStr;
 
   // add markdown to ul list with link refs
-  const ulElem = document.createElement("ul");
-  renderedBox.appendChild(ulElem);
+  //   const ulElem = document.createElement("ul");
+  //   renderedBox.appendChild(ulElem);
 
-  const liElem = document.createElement("li");
-  liElem.appendChild(document.createTextNode("Hello"));
-  ulElem.appendChild(liElem);
+  //   const liElem = document.createElement("li");
+  //   liElem.appendChild(document.createTextNode("Hello"));
+  //   const aRef = document.createElement("a");
+  //   aRef.href = "https://thefern.dev";
+  //   liElem.appendChild(aRef);
+  //   ulElem.appendChild(liElem);
 };
 
 // event listeners
