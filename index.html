@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Branches Menu</title>
+    <link href="styles.css" rel="stylesheet" />
+    <link href="font-awesome.min.css" rel="stylesheet" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <nav class="menu">
+      <div class="left">
+        <h1 class="title">
+          <a href="/">
+            <i class="fa fa-code-fork" aria-hidden="true"></i>
+            Branches Menu
+          </a>
+        </h1>
+      </div>
+      <div class="right">
+        <button class="menu-btn">
+          <i class="fa fa-moon-o" aria-hidden="true"></i>
+          <div>Theme</div>
+        </button>
+        <button class="menu-btn">
+          <i class="fa fa-sliders" aria-hidden="true"></i>
+          <div>Settings</div>
+        </button>
+        <button class="menu-btn">
+          <i class="fa fa-github-alt" aria-hidden="true"></i>
+          <div>Repo</div>
+        </button>
+      </div>
+    </nav>
+    <form>
+      <div class="form">
+        <label for="repo-url">Repo URL: </label>
+        <input type="text" id="repo-url" placeholder="Repo URL" />
+        <label for="sort-by">Sort by: </label>
+        <select name="sort-by" id="sort-by">
+          <option value="date">Date</option>
+          <option value="number">Number in name</option>
+        </select>
+        <label for="type">Type: </label>
+        <select name="type" id="type">
+          <option value="both">Both</option>
+          <option value="branches">Branches</option>
+          <option value="tags">Tags</option>
+        </select>
+      </div>
+    </form>
+    <div class="generate">
+      <button id="generate-btn">
+        <i class="fa fa-code-fork" aria-hidden="true"></i>
+        <div>Generate</div>
+      </button>
+    </div>
+    <div class="markdown">
+      <div class="left">
+        <textarea id="output-box"></textarea>
+      </div>
+      <div id="rendered"></div>
+    </div>
+  </body>
+</html>

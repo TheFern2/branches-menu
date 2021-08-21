@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&family=Roboto&display=swap");
+
+:root {
+  --background-color: rgb(0, 0, 0);
+  --gray-color: rgb(46, 46, 46);
+  --primary-color: rgb(137, 44, 220);
+  --secondary-color: rgb(82, 5, 123);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+}
+
+.menu-btn,
+#generate-btn {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  background: none;
+  border: none;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.menu-btn,
+#generate-btn > i {
+  margin-right: 5px;
+}
+
+.menu-btn:hover,
+#generate-btn:hover {
+  background-color: rgb(91, 185, 189);
+}
+
+.menu .left {
+  margin-right: 200px;
+}
+
+.menu .right {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  align-items: center;
+}
+
+.title a {
+  text-decoration: none;
+  color: white;
+}
+
+.form {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.form > label {
+  color: white;
+  font-size: 20px;
+}
+
+.form > input {
+  height: 30px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.form > select {
+  height: 30px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+#repo-url {
+  width: 300px;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+.generate {
+}
+
+#generate-btn {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+#output-box {
+  color: white;
+  background-color: var(--gray-color);
+  border-radius: 5px;
+  width: 800px;
+  height: 300px;
+  margin-bottom: 20px;
+  padding: 5px;
+  font-size: 15px;
+}
+
+#rendered {
+  color: white;
+  background-color: var(--gray-color);
+  border-radius: 5px;
+  width: 800px;
+  height: 300px;
+  padding: 5px;
+}
