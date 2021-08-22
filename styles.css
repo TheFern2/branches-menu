@@ -41,7 +41,7 @@ body {
   font-size: 15px;
 }
 
-.menu-btn,
+.menu-btn > i,
 #generate-btn > i {
   margin-right: 5px;
 }
@@ -98,9 +98,6 @@ input:focus {
   outline: none;
 }
 
-.generate {
-}
-
 #generate-btn {
   font-size: 20px;
   display: flex;
@@ -126,6 +123,10 @@ input:focus {
   background-color: var(--gray-color);
   border-radius: 5px;
   width: 800px;
-  height: 300px;
+  height: auto;
   padding: 5px;
+}
+
+#rendered > ul > li > a {
+  color: white;
 }

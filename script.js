@@ -7,6 +7,7 @@ const renderedBox = document.getElementById("rendered");
 
 let repoOwner = "";
 let repoName = "";
+let url = "";
 
 const getRefs = async (url) => {
   const splitUrl = url.split("/");
@@ -75,26 +76,62 @@ const updateUI = (gitObjects) => {
   }
   outputBox.value = outputStr;
 
-  // add markdown to ul list with link refs
-  //   const ulElem = document.createElement("ul");
-  //   renderedBox.appendChild(ulElem);
+  renderMarkdown(gitObjects);
+  repoUrl.value = url;
+};
 
-  //   const liElem = document.createElement("li");
-  //   liElem.appendChild(document.createTextNode("Hello"));
-  //   const aRef = document.createElement("a");
-  //   aRef.href = "https://thefern.dev";
-  //   liElem.appendChild(aRef);
-  //   ulElem.appendChild(liElem);
+const renderMarkdown = (gitObjects) => {
+  // check if there's an existing ul
+  const existingUl = document.getElementById("markdown-ul");
+  if (existingUl) {
+    existingUl.remove();
+  }
+
+  // add markdown to ul list with link refs
+  const ulElem = document.createElement("ul");
+  ulElem.setAttribute("id", "markdown-ul");
+  renderedBox.appendChild(ulElem);
+
+  // output to ul > li
+  for (let i = 0; i < gitObjects.length; i++) {
+    const liElem = document.createElement("li");
+    const aRef = document.createElement("a");
+    aRef.href = `https://github.com/${repoOwner}/${repoName}/tree/${gitObjects[i].branchName}`;
+    aRef.innerText = `${gitObjects[i].branchName}`;
+    liElem.appendChild(aRef);
+    ulElem.appendChild(liElem);
+  }
+};
+
+const updateLocalStorage = (repoName, repoOwner, gitObjects) => {
+  const gitPack = {
+    repoUrl: url,
+    repoOwner: repoOwner,
+    repoName: repoName,
+    gitObjects: gitObjects,
+  };
+  localStorage.setItem("repoData", JSON.stringify(gitPack));
 };
 
 // event listeners
 generateBtn.addEventListener("click", async () => {
   const refsJson = await getRefs(repoUrl.value);
+  url = repoUrl.value;
   //   console.log(refsJson);
   let gitObjects = createGitObjects(refsJson);
   gitObjects = await getCommitsDates(gitObjects);
-  console.log(gitObjects);
+  //   console.log(gitObjects);
   gitObjects.sort(branchSort);
-  console.log(gitObjects);
+  //   console.log(gitObjects);
   updateUI(gitObjects);
+  updateLocalStorage(repoName, repoOwner, gitObjects);
 });
+
+// update ui if there's data in localStorage
+const repoData = JSON.parse(localStorage.getItem("repoData"));
+if (repoData) {
+  url = repoData.repoUrl;
+  repoOwner = repoData.repoOwner;
+  repoName = repoData.repoName;
+  updateUI(repoData.gitObjects);
+}
